@@ -1,0 +1,6 @@
+goodsId,name,type,bornFaceDir,pickRadius,templateId
+int,string,int,int,int,int
+物品ID,名称,"(1001 经验,2001 BUFF，2002 技能[道具] )",出生朝向,拾取半径,场景掉落模型
+10001,经验,1001,0,1000,3000001
+2,手雷,2002,0,1000,4000001
+20002,加血BUFF,2001,0,1000,2000001

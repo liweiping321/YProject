@@ -1,0 +1,17 @@
+//@module{"name":"logic","desc":"玩家模块","codeRange":"[501,600]"}
+//逻辑服与用户交互协议
+option java_package = "com.game.protobuf.logic";
+
+option java_outer_classname = "LogicProto";
+
+//@msg{"code":501, "name":"Login", "desc":"用户登录请求", "msgBody":"PBLoginReq", "template":"FightingHandler"}
+message PBLoginReq{
+	required string account= 1;     //账号
+	required string playerName= 2;  //登录用户名角色名
+}
+
+//@msg{"code":502, "name":"Login", "desc":"用户登录响应", "msgBody":"PBLoginResp"}
+message PBLoginResp{
+
+	required int64 playerId= 1;  //玩家ID
+}

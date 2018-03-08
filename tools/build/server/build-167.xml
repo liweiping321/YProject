@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project name="build-167" default="upload-restart" basedir="../../.">
+    <property file="build/build.properties"/>
+    <property file="build/server/build167.properties"/>
+
+    <target name="stop" description="停止服务器">
+        <echo message="停止服务器。。。${host}"/>
+        <sshexec port="${port}" host="${host}" username="${user}" password="${password}" trust="true"
+                 command="cd ${remotePath}; sh game.sh stop"/>
+        <echo message="停止服务器完成。。。"/>
+    </target>
+
+    <!--不知道如何关闭连接，所以5秒后强制关闭-->
+    <target name="upload-restart" depends="upload-server" description="上传打包好的文件并重启服务器">
+        <echo message="准备重启服务器。。。${host}"/>
+        <sshexec port="${port}" host="${host}" username="${user}" password="${password}" trust="true"
+                 command="cd ${remotePath}; sh game.sh " verbose="false" timeout="5000" failonerror="false"/>
+        <echo message="重启服务器完成。。。"/>
+    </target>
+
+    <target name="upload-server" depends="makeDirs" description="上传打包好的文件到服务器">
+
+        <echo message="准备上传文件到服务器。。。${host}"/>
+        <scp port="${port}" todir="${user}:${password}@${host}:${remotePath}" trust="true" verbose="true"
+             file="../${deploy_path}">
+            <fileset dir="../${deploy_path}">
+                <exclude name="**/*.class"/>
+                <exclude name="${exclude}"/>
+            </fileset>
+        </scp>
+        <echo message="准备上传配置文件到服务器。。。${host}"/>
+        <scp port="${port}" todir="${user}:${password}@${host}:${remotePath}/config" trust="true" verbose="true"
+             file="../${config_path}">
+            <fileset dir="../${config_path}">
+                <exclude name="${excludeConfig}"/>
+            </fileset>
+        </scp>
+
+        <echo message="上传文件完成。。。"/>
+    </target>
+
+    <target name="makeDirs" description="保险起见先生成文件夹">
+        <sshexec port="${port}" host="${host}" username="${user}" password="${password}" trust="true"
+                 command="cd /; mkdir -p ${remotePath}/config"/>
+    </target>
+</project>
+
+        

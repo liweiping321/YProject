@@ -1,0 +1,16 @@
+name,value,desc
+string,string,string
+配置的主键,"配置的值（任意类型,之后在程序里转）",配置说明
+dropLifeTime,10000,掉落物物品存活时间(单位毫秒)
+cityReliveTime,3000,回城复活时间(单位毫秒)
+cellSzie,500,格子大小(单位毫米)
+bodyDisappeareTime,-1,尸体消失时间(单位毫秒)
+moveTime,300,移动时长(单位毫秒)
+showCurPoint,FALSE,是否输出当前位置
+lockAttackTime,5000,辅助射击锁定攻击时间(单位毫秒)
+pickCheckTime,500,拾取物品检查时间间隔(单位毫秒)
+showMsg,FALSE,是否输出消息内容
+assistsTime,600000,助攻判定时间
+heroDropIds,1001103,英雄击杀掉落(|隔开)
+heroMaxLevel,5,英雄最大等级
+timeSequentKill,30000,连续击杀成就的限定时间间隔

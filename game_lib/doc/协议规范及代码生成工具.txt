@@ -1,0 +1,54 @@
+协议命名规范
+proto文件命名:
+	proto文件以模块为单位，请求响应两个文件.
+	命名规则:模块名_[cs|sc].proto 如下例:
+    Friend_cs.proto 好友模块请求协议
+	Friend_sc.proto 好友模块响应协议
+    输出类命名:模块名[CS|SC]proto 如下例:
+	FriendCSProto 好友模块请求消息类名 
+	FriendSCProto 好友模块响应消息类名
+
+消息体命名:
+    请求消息：PB+功能名+Req  例如 PBFriendApplyAgreeReq 同意好友申请
+	响应消息：PB+功能名+Resp 例如 PBFriendListResp  好友列表信息
+	复用Bean:  PB+功能名称+Bean 例如 PBFriendBean  好友信息
+	
+属性命名遵循Java规范,每个属性都需要加上注释
+
+消息体指令映射命名规范:
+   必须以//@msg 标记开始,中间以空格隔开.  
+   //@msg      code     name                       desc        msgBody template
+	消息标签   消息号   handler、MsgCode常量名字   消息描述                消息体        PlayerHandler
+   
+   消息体请求消息：
+   //@msg{"code":503, "name":"FriendApplyRefuse", "desc":"拒绝好友申请", "msgBody":"PBFriendApplyRefuseReq", "template":"PlayerHandler"}
+   空消息体请求消息:
+   //@msg{"code":505,"name":"GetFriendList","desc":"获取好友列表","template":"PlayerEmptyReqHandler"}
+   消息体响应消息：
+   //@msg{"code":504,"name":"FriendList","desc":"好友列表信息","msgBody":"PBFriendListResp"}
+   空消息体响应消息:
+  //@msg{"code":502,"name":"FriendApplyAgree","desc":"同意好友申请"}
+	
+   Handler类命名 name+Handler 例如：FriendApplyAgreeHandler
+   消息号命名    name+[Req|Resp]  例如:FriendApplyAgreeReq,FriendListResp
+ 
+消息号使用规范
+ 1.消息号长度为short，大小范围 0，32767 的十进制。
+ 2.每个模块使用一个区间段的协议号 例如好友模块指令号范围(500,600]。
+ 3.请求跟响应指令号不复用,请求使用奇数501，响应使用偶数 502 。
+ 4.不使用二级指令，每个指令号需定义为 唯一的。
+  
+   
+输出内容:
+指令号常量         MsgCode类      （服务端程序使用）
+请求指令处理类     例如：FriendApplyAgreeHandler (服务端程序使用)
+协议配置文件       ProtoConfig.xml (协议测试工具用)
+协议描述合并文件   merge.txt       (协议测试人员用)
+
+
+   
+   
+
+
+
+	

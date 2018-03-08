@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="DEBUG" monitorInterval="1800">
+
+    <properties>
+        <property name="LOG_HOME">log</property>
+        <property name="ERROR_LOG_FILE_NAME">error.log</property>
+		<property name="WARN_LOG_FILE_NAME">warn.log</property>
+		<property name="INFO_LOG_FILE_NAME">info.log</property>
+		<property name="DEBUG_LOG_FILE_NAME">debug.log</property>
+		<property name="FILE_PATTERN">zip-log/%d{yyyyMMddHHmmss}.gz</property>
+		<property name="LAYOUT_PATTERN">%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n</property>
+		<!--  
+		<property name="LAYOUT_PATTERN">%-5p:%d-%c-%-2r[%t]%x%n%m %n</property>
+		-->
+		<property name="FILE_SIZE">100 MB</property>
+    </properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT" >
+         <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+  
+        </Console>
+
+		<RollingFile name="DEBUG" fileName="${LOG_HOME}/${DEBUG_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${DEBUG_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+
+		<RollingFile name="WARN" fileName="${LOG_HOME}/${WARN_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${WARN_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+			<Policies>
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+
+		<RollingFile name="ERROR" fileName="${LOG_HOME}/${ERROR_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${ERROR_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+			<Policies>
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+       
+    </Appenders>
+
+    <Loggers>
+   
+     <root level="trace" includeLocation="true" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+			<appender-ref ref="DEBUG"/>
+		   <appender-ref ref="INFO"/>
+			<appender-ref ref="WARN"/>
+			<appender-ref ref="ERROR"/>
+      </root>
+        
+        
+    </Loggers>
+
+</Configuration>

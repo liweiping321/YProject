@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="handler/|entity/|cfg-provider/|cfg/|web/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/handler"/>
+	<classpathentry kind="src" path="src/web"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_base"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-lang-2.6.jar" sourcepath="/game_lib/sources/commons-lang-2.6-sources.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/commons-pool-1.6.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/druid-1.0.23-SNAPSHOT.jar" sourcepath="/game_lib/sources/druid-1.0.23-sources.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/fastjson-1.2.24.jar" sourcepath="/game_lib/sources/fastjson-1.2.24-sources.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/guava-17.0.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/httpasyncclient-4.1.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/httpcore-nio-4.4.4.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javacsv-2.0.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.el-3.0.0.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.servlet.jsp-2.3.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.servlet.jsp-api-2.3.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/javax.servlet.jsp.jstl-1.2.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-continuation-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-http-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-io-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-jsp-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-schemas-3.1.M0.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-security-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-server-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-servlet-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-util-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-webapp-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/jetty-xml-9.2.15.v20160210.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/log4j-api-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/log4j-core-2.6.2.jar" sourcepath="/game_lib/sources/log4j-core-2.6.2-sources.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/log4j-slf4j-impl-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/log4j-web-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/mina-core-2.0.13.jar" sourcepath="/game_lib/sources/mina-core-2.0.13-sources.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/mysql-connector-java-5.1.38.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/netty-all-4.1.8.Final.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/protobuf-java-2.4.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/protobuf-java-format-1.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/quartz-2.2.2.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/simple-xml-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/game_lib/lib/slf4j-api-1.7.9.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pb_protocol"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_cfg"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_entity"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_fighting"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/game_match"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

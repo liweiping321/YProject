@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="build-lib" default="deploy-lib" basedir="../.">
+
+    <property file="build/build.properties"/>
+
+    <target name="deploy-lib" depends="init">
+        <echo message="准备复制game-lib。。。"/>
+        <copydir src="../${game_lib}" dest="../${lib-out}" description="把lib依赖包复制到指定目录"/>
+        <echo message="复制game-lib完成。。。"/>
+    </target>
+
+    <target name="init" depends="clean" description="创建部署文件所需文件夹">
+        <mkdir dir="../${lib-out}" />
+    </target>
+
+    <target name="clean" description="删除已有文件">
+        <delete dir="../${lib-out}" />
+    </target>
+
+</project>

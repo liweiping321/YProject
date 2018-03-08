@@ -1,0 +1,11 @@
+templateId,name,modelName,showHpType,headIcon,defaultFashion,showAction,birthOffset,collideRect,birthMusic,beHurtMusic,dieMusic,shadowResource,zoomProportion,shakeScreen,shakeDatavar,birthEffect,dieEffect,extEffect,dieTime,aimCtrlResPath
+int,string,string,int,string,string,string,string,string,string,string,string,string,float,bool,string,string,string,string,float,string
+主键，npc模板id,名字,模型名称(技能实体模型名称不在此处配置在birthAnimation),血条显示属性  0:不显示血条，被攻击也不显示，1：默认不显示，被攻击时显示，2：始终显示,头像图片,默认时装,选择英雄时默认动作,出生地x|y|z,碰撞矩形,出生音效,受击音效,死亡音效,脚底阴影,缩放比例,死亡后是否震屏  1是0否,震屏数据,出生动画(起手光效),死亡光效,扩展光效,死亡动画播放时间（单位毫秒）,动画控制器
+1001100,手枪子弹1,0,0,1001,13101,fig,0.126|0.814|0.406,0|0|0|0.2|0.2|0.2,001_1,0,0,0,0,0,0,10112|1:10112,0,0,0,
+1,枪手,Jiqiangshou,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,0,0,2000,Animation/Role/Jiqiangshou1
+1000001,箱子,WoodBox,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,10000001,0,0,
+2000001,加血Buff实体,yiliaobao,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,0,20000002,0,
+3000001,经验书,jingyanshu,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,0,20000002,0,
+4000001,南瓜炸弹(道具),nanguazhandan,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,0,20000002,0,
+5000001,爆炸汽油桶,jiutong,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,10000001|10004,0,2000,
+5,堡垒,baolei,0,1001,13101,fig,0,0|0.86|0|0.31|1.58|0,0,0,0,0,0,0,0,0,0,0,2000,Animation/Role/Jiqiangshou1

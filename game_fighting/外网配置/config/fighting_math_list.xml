@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 战斗服连接匹配服 地址列表 -->
+<list>
+   <server ip="113.107.161.49" port="10101" />
+</list>

@@ -1,0 +1,5 @@
+monsterId,type,name,commonSkillId,skillIds,attackCd,dropIds,banEffects,hurtFormulaType,maxHp,attack,breachPower,defense,opposeCrit,eyeShot,critRate,moveSpeed,aiType,active,alert,patrol,pursuit,damageRadius,dieTime,dieTriggerSkill,templateId
+int,int,string,int,string,int,string,string,int,int,int,int,int,int,int,int,int,int,bool,int,int,int,int,int,int,int
+怪物模板id,"实体类型(1.箱子,2普通怪物,3.爆炸类型怪物)",名字,基础攻击技能,技能释放顺序(用|分隔),攻击间隔,掉落列表(用|隔开),禁用效果列表(用|隔开),伤害公式计算类型(0.掉血，1.破坏力),生命上限,攻击,破坏力,防御,抗爆值,视野,暴击率,移动速度,"AI类型(0.待机,1巡逻)",是否主动攻击,警戒范围(以怪物 当前点 为中心点) 主动攻击怪和角色间距离进入警戒范围将引发怪物的主动攻击," 巡逻范围(以怪物 出生点 为中心点) ,怪物初始化时在这个范围内移动",,伤害半径,死亡持续时间(毫秒),死亡触发技能,怪物模型ID
+1001101,1,箱子,2000002,2000002,200,1001100|1001102,0,1,6,200,2,0,0,0,0,0,0,FALSE,2000,2000,2000,500,0,0,1000001
+1001102,1,汽油桶,,,0,,0,1,6,0,5,0,0,0,0,0,0,FALSE,2000,2000,2000,500,1000,3,5000001

@@ -1,0 +1,20 @@
+//@module{"name":"match","desc":"游戏匹配模块" ,"codeRange":"[601,700]"}
+//匹配服与逻辑服，战斗服交互协议
+option java_package = "com.game.protobuf.match";
+
+option java_outer_classname = "MatchProto";
+
+//@msg{"code":601, "name":"StartMatch", "desc":"请求撮合加入游戏", "msgBody":"PBStartMatchReq", "template":"PlayerHandler"}
+message PBStartMatchReq {
+	required int32 heroId = 1;									//英雄id
+	required int32 fightingType  = 2;							//战斗类型
+}
+
+//@msg{"code":602, "name":"StartMatch", "desc":"准备撮合", "msgBody":"PBStartMatchResp"}
+message PBStartMatchResp{
+
+      required int32 matchTime = 1;     //匹配一轮的时长（单位毫秒）
+}
+
+
+

@@ -1,0 +1,6 @@
+weaponId,name,skillId,attackRate,critRate,critHurt,reloadTime,clipSize,breachPower
+int,string,int,int,int,int,int,int,int
+主键ID,武器名称,技能Id,攻击转行率(万分比),暴击率(万分比),暴击伤害,换弹夹时间,弹夹容量,破坏力
+100001,机枪,1,8000,2000,100,1500,40,2
+100002,弓箭,1,9000,1000,100,5000,40,2
+100003,弹幕,2,7000,2000,100,5000,40,2

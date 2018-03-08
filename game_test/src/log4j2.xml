@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="DEBUG" monitorInterval="1800">
+
+    <properties>
+        <property name="LOG_HOME">log</property>
+        <property name="ERROR_LOG_FILE_NAME">error.log</property>
+		<property name="WARN_LOG_FILE_NAME">warn.log</property>
+		<property name="INFO_LOG_FILE_NAME">info.log</property>
+		<property name="DEBUG_LOG_FILE_NAME">debug.log</property>
+		<property name="TASK_TIME_LOG_FILE_NAME">taskTime.log</property>
+		<property name="DATASOURCE_STAT_LOG_FILE_NAME">dataSourceStat.log</property>
+		<property name="SQL_LOG_FILE_NAME">sql.log</property>
+	    <property name="MONITOR_LOG_FILE_NAME">monitor.log</property>
+		<property name="COMMAND_TIME_LOG_FILE_NAME">commandTime.log</property>
+		<property name="CACHE_LOG_FILE_NAME">cache.log</property>
+		<property name="THREAD_LOG_FILE_NAME">thread.log</property>
+		<property name="FILE_PATTERN">zip-log/%d{yyyyMMddHHmmss}.gz</property>
+		<property name="LAYOUT_PATTERN">%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n</property>
+		<!--  
+		<property name="LAYOUT_PATTERN">%-5p:%d-%c-%-2r[%t]%x%n%m %n</property>
+		-->
+		<property name="FILE_SIZE">100 MB</property>
+    </properties>
+
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LAYOUT_PATTERN}" />
+        </Console>
+
+		<RollingFile name="DEBUG" fileName="${LOG_HOME}/${DEBUG_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${DEBUG_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+
+		<RollingFile name="WARN" fileName="${LOG_HOME}/${WARN_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${WARN_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+			<Policies>
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+
+		<RollingFile name="ERROR" fileName="${LOG_HOME}/${ERROR_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${ERROR_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+			<Policies>
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+        <RollingFile name="TASK_TIME" fileName="${LOG_HOME}/${TASK_TIME_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${TASK_TIME_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+         <RollingFile name="DATASOURCE_STAT" fileName="${LOG_HOME}/${DATASOURCE_STAT_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${DATASOURCE_STAT_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+         <RollingFile name="COMMAND_TIME" fileName="${LOG_HOME}/${COMMAND_TIME_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${COMMAND_TIME_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+         <RollingFile name="SQL" fileName="${LOG_HOME}/${SQL_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${SQL_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+         <RollingFile name="CACHE" fileName="${LOG_HOME}/${CACHE_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${CACHE_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        
+        
+         <RollingFile name="MONITOR" fileName="${LOG_HOME}/${MONITOR_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${MONITOR_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LAYOUT_PATTERN}"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="THREAD" fileName="${LOG_HOME}/${THREAD_LOG_FILE_NAME}" filePattern="${LOG_HOME}/${THREAD_LOG_FILE_NAME}.${FILE_PATTERN}" append="true">
+            <Filters>
+            	<ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            	<ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="%msg%n"/>
+            <Policies>
+            	<!-- TimeBasedTriggeringPolicy modulate="true" interval="24" /-->
+            	<SizeBasedTriggeringPolicy size="${FILE_SIZE}"/>
+            	<DefaultRolloverStrategy max="20"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+    
+     <logger name="TASK_TIME" level="debug" additivity="false">  
+      <appender-ref ref="TASK_TIME"/>  
+     </logger>  
+     <logger name="CACHE" level="debug" additivity="false">  
+      <appender-ref ref="CACHE"/>  
+     </logger> 
+     <logger name="com.alibaba.druid.pool.DruidDataSourceStatLoggerImpl" level="debug" additivity="false">  
+      <appender-ref ref="DATASOURCE_STAT"/>  
+     </logger>  
+     
+      <logger name="DATASOURCE_STAT" level="debug" additivity="false">  
+      <appender-ref ref="DATASOURCE_STAT"/>  
+     </logger> 
+      <logger name="org.apache.mina" level="warn"  />  
+      
+      <logger name="com.alibaba.druid.pool.PreparedStatementPool" level="info"  />  
+   
+      <logger name="druid.sql" level="debug" additivity="false">  
+      <appender-ref ref="SQL"/>  
+     </logger> 
+     
+     <logger name="COMMAND_TIME" level="error" additivity="false">  
+      <appender-ref ref="COMMAND_TIME"/>  
+     </logger> 
+     
+     <logger name="THREAD" level="debug" additivity="false">  
+      <appender-ref ref="THREAD"/>  
+     </logger> 
+     
+      <logger name="com.road.ddt.util.MonitorUtil" level="debug" additivity="false">  
+      <appender-ref ref="MONITOR"/>  
+     </logger>
+     
+        <root level="debug" includeLocation="true" additivity="true">
+            <appender-ref ref="CONSOLE"/>
+			<appender-ref ref="DEBUG"/>
+		   <appender-ref ref="INFO"/>
+			<appender-ref ref="WARN"/>
+			<appender-ref ref="ERROR"/>
+        </root>
+        
+        
+    </Loggers>
+
+</Configuration>

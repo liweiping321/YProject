@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project name="build-tool" default="deploy-tool" basedir="../.">
+
+    <property file="build/build.properties"/>
+
+    <path id="project.classpath">
+        <pathelement location="${java.home}/jre/lib/rt.jar"/>
+        <pathelement location="../${lib-out}"/>
+        <fileset dir="../${lib-out}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="../${module_out}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="../${tool_lib}">
+            <include name="**/*.jar"/>
+        </fileset>
+
+    </path>
+
+
+    <target name="deploy-tool" depends="init">
+
+        <javac encoding="utf-8" srcdir="../${game_tool}/src" destdir="../${tool-out}/classes" source="${java-version}"
+               target="${java-version}" debug="${is-debug}" verbose="${is-verbose}" description="编译tools">
+            <classpath refid="project.classpath"/>
+        </javac>
+        <jar basedir="../${tool-out}" destfile="../${tool-out}/tools.jar" description="打包tools"/>
+
+    </target>
+
+    <target name="init" depends="clean" description="创建部署文件所需文件夹">
+        <mkdir dir="../${tool-out}/classes"/>
+    </target>
+
+    <target name="clean" description="删除已有文件">
+        <delete dir="../${tool-out}"/>
+    </target>
+
+</project>

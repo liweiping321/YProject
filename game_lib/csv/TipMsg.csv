@@ -1,0 +1,6 @@
+tipMsgCode,content,clientSync
+int,string,bool
+提示消息code,消息内容,客户端是否已经同步
+1,消息请求太频繁，请稍候再试！,TRUE
+2,${0},TRUE
+3,"${0},您的背包已满，请扩展背包继续购买！",TRUE

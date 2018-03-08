@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root >
+ 
+	<module name='player' desc='玩家模块' maxCode="600" minCode="501">
+		<ProtoConfig type='UP' code='1' subCode='0' protocolType="PB" desc='登录' bodyClazzName='com.road.ddt.pb.command.LoginReqProto$LoginReq'/>
+		<ProtoConfig type='DOWN' code=2 subCode='0' protocolType="PB" desc='等待登录个数' bodyClazzName=''/>
+	</module>
+	 
+</root>
+<root >
+<module name='filters' desc='过滤'>
+	<ProtoConfig filter='true' type='UP' code='0x04' subCode='0' protocolType="PB" desc='心跳' bodyClazzName=''/>
+	<ProtoConfig filter='true' type='DOWN' code='0x04' subCode='0' protocolType="PB" desc='心跳' bodyClazzName=''/>
+	<ProtoConfig filter='true' type='DOWN' code='0x06' subCode='0' protocolType="PB" desc='心跳' bodyClazzName=''/>
+</module>
+
+<module name='item' desc='物品模块'>
+	<ProtoConfig compress='true' type='DOWN' code='0x40' subCode='0' protocolType="PB" desc='格子物品' bodyClazzName='com.road.ddt.pb.command.GridGoodResProto$GridGoodRes'/>
+	<ProtoConfig type='UP' code='0x2c' protocolType="PB" desc='购买物品' bodyClazzName='com.road.ddt.pb.command.BuyItemReqProto$BuyItemReq'/>
+	<ProtoConfig type='DOWN' code='0x2c' protocolType="BIN" desc='购买物品' bodyClazzName=''/>
+</module>
+<module name="pets" desc="宠物模块">
+	<ProtoConfig type="UP" code="0x200" subCode="0x01" desc="请求宠物信息,p1用户ID" protocolType="BIN" bodyClazzName=""/>

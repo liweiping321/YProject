@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project name="build-all" default="deploy-all" basedir="../.">
+
+    <property file="build/build.properties"/>
+
+    <target name="deploy-all" depends="init" description="将各模块打包后的文件做结构调整">
+
+        <echo message="准备打包各模块。。。"/>
+        <!--调用各模块的打包方法-->
+        <ant antfile="build/build-lib.xml"/>
+        <ant antfile="build/build-base.xml"/>
+        <ant antfile="build/build-entity.xml"/>
+        <ant antfile="build/build-cfg.xml"/>
+        <ant antfile="build/build-protocol.xml"/>
+        <ant antfile="build/build-fighting.xml"/>
+        <ant antfile="build/build-match.xml"/>
+        <echo message="打包完成。。。"/>
+        <!--<copy file="${app-out}/config/log4j2.xml" todir="${gameserver-out}/config/" />-->
+    </target>
+
+    <target name="init" depends="clean" description="创建部署文件所需文件夹">
+        <mkdir dir="../${module_out}"/>
+    </target>
+
+    <target name="clean" description="删除已有文件">
+        <delete dir="../${deploy_path}"/>
+    </target>
+
+
+    <!--&lt;!&ndash; SVN相关属性 &ndash;&gt;-->
+    <!--<path id="svnlib" description="SVNKit相关包lib">-->
+    <!--<fileset dir="${svn.libPath}">-->
+    <!--<include name="*.jar" />-->
+    <!--</fileset>-->
+    <!--</path>-->
+
+    <!--<target name="svnCheckout" description="SVN检出项目代码">-->
+    <!--<echo message="删除原始文件，重新Checkout" />-->
+    <!--<delete dir="${svn.checkoutDir}/${projectName}" />-->
+
+    <!--<echo message="Checkout最新代码" />-->
+    <!--<java classname="org.tmatesoft.svn.cli.SVN" dir="${svn.checkoutDir}" fork="true">-->
+    <!--<arg value="checkout" />-->
+    <!--<arg value="&#45;&#45;username" />-->
+    <!--<arg value="${svn.username}" />-->
+    <!--<arg value="&#45;&#45;password" />-->
+    <!--<arg value="${svn.password}" />-->
+    <!--<arg value="${svn.repository}/${projectName}" />-->
+    <!--<classpath refid="svnlib" />-->
+    <!--</java>-->
+    <!--</target>-->
+</project>
+        

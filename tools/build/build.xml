@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="build" default="deploy-inside" basedir="../.">
+
+    <property file="build/build.properties"/>
+
+    <target name="deploy-inside" depends="packUp" description="上传到内网服务器并重启">
+
+        <ant antfile="build/server/build-167.xml"/>
+    </target>
+
+    <target name="deploy-outside" depends="packUp" description="上传到内网服务器并重启">
+
+        <ant antfile="build/server/build-177.xml"/>
+    </target>
+
+    <target name="deploy-all" depends="packUp" description="上传到内网和外网服务器并重启">
+        <ant antfile="build/server/build-167.xml"/>
+        <ant antfile="build/server/build-177.xml"/>
+    </target>
+
+    <target name="packUp" description="打包所有代码">
+        <ant antfile="build/build-all.xml"/>
+    </target>
+
+</project>

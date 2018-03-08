@@ -1,0 +1,7 @@
+dropBoxId,name,dropRateType,goodsId1,goodsNum1,probability1,goodsId2,goodsNum2,probability2,goodsId3,goodsNum3,probability3,goodsId4,goodsNum4,probability4,goodsId5,goodsNum5,probability5,extendMaps,description
+int,string,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,string,string
+掉落Id,掉落名称,掉落概率类型(0.固定概率掉落多个，1整体概率掉落一个),掉落项1,数量1,概率1(万分比),掉落项2,数量2,概率2(万分比),掉落项3,数量3,概率3(万分比),掉落项4,数量4,概率4(万分比),掉落项5,数量5,概率5(万分比),掉落扩展(goodsId1|goodsNum1|probability1;goodsId2|goodsNum2|probability2),描述
+1001100,掉落经验,1,10001,20,2500,10001,40,2500,10001,0,5000,0,0,0,0,0,0,,提升血量上限
+1001101,掉落加血BUFF,0,20002,1,10000,0,0,0,0,0,0,0,0,0,0,0,0,,不能移动
+1001102,掉落手雷,0,2,1,2500,0,0,0,0,0,0,0,0,0,0,0,0,,掉落手雷
+1001103,英雄被击杀掉落经验,0,10001,150,10000,0,0,0,0,0,0,0,0,0,0,0,0,,击杀奖励

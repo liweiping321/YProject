@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project name="build-base" default="deploy-base" basedir="../.">
+
+    <property file="build/build.properties"/>
+
+    <path id="project.classpath">
+        <pathelement location="${java.home}/jre/lib/rt.jar"/>
+        <pathelement location="../${lib-out}"/>
+        <fileset dir="../${lib-out}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="../${module_out}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="deploy-base" depends="init" >
+
+        <echo message="准备编译打包game_base。。。"/>
+        <javac encoding="utf-8" srcdir="../${game_base}/src" destdir="../${base-out}" source="${java-version}"
+               target="${java-version}" debug="${is-debug}" verbose="${is-verbose}" description="编译game_base">
+            <classpath refid="project.classpath"/>
+        </javac>
+        <jar basedir="../${base-out}" destfile="../${module_out}/game_base.jar" description="打包game_base"/>
+        <echo message="编译打包game_base完成。。。"/>
+    </target>
+
+    <target name="init" depends="clean" description="创建部署文件所需文件夹">
+        <mkdir dir="../${base-out}"/>
+    </target>
+
+    <target name="clean" description="删除已有文件">
+        <delete dir="../${base-out}"/>
+    </target>
+
+</project>
+        

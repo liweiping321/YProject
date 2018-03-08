@@ -1,0 +1,6 @@
+sceneId,mapId,fightingType,bornType,sceneName,openLevel,actionScript,dropIds,music,description
+int,int,int,int,string,int,string,string,string,string
+场景Id,地图id,战斗类型,出生点类型(0顺序，1随机),关卡名,开启等级,场景处理脚本,掉落列表(id1|id2|id3),场景音乐,描述
+10001,1,2,0,Test_005,1,,,missionBg_1,废墟世界
+10002,2,2,0,废墟世界,1,,,missionBg_1,废墟世界
+10003,3,2,1,废墟世界,1,,,missionBg_1,废墟世界

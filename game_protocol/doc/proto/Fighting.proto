@@ -1,0 +1,303 @@
+//@module{"name":"fighting","desc":"游戏战斗模块" ,"codeRange":"[701,900]"}
+//战斗服与用户交互协议
+option java_package = "com.game.protobuf.fighting";
+option java_outer_classname = "FightingProto";
+
+//属性Bean信息(1002等级,1004当前血量,1005最大血量,1011移动速度,)
+message PBPropValueBean {
+   required int32 type = 1; //属性类型
+   required int64 value=2; //属性值
+}
+
+//@msg{"code":702, "name":"GameLoading", "desc":"游戏加载进度", "msgBody":"PBGameLoadingResp"}
+message PBGameLoadingResp{
+	required int32 loadingTime = 1; //加载时间(单位毫秒)
+	required int32 sceneId = 2; //加载的地图资源ID
+	required int32 gameId = 3; //游戏id
+	required int64 playerId =4; //玩家ID
+	optional bool firstInGame =5;	//是否是第一次进游戏
+	repeated PBLivingInfoBean livingInfo = 6; //生物信息
+}
+
+//@msg{"code":703, "name":"LoadingProcess", "desc":"加载进度", "msgBody":"PBLoadingProcessReq", "template":"FightingHeroHandler"}
+message PBLoadingProcessReq{
+
+	required int32 process = 1;								//加载进度
+}
+
+//@msg{"code":704, "name":"LoadingProcess", "desc":"加载进度", "msgBody":"PBLoadingProcessResp" }
+message PBLoadingProcessResp{
+
+	required int64 playerId =1; 							//玩家ID
+	required int32 process = 2;								//加载进度
+}
+
+
+ //生物信息
+message PBLivingInfoBean {
+	required int32 phId = 1; //生物物理ID
+	required int32 phType = 2; //生物类型(1.英雄,2.怪物,由AI控制其逻辑,3.子弹,4.场景掉落物)
+	repeated PBPropValueBean propValues =3;//属性列表
+	required int32 x = 4; //生物X坐标(0坐标系)
+	required int32 y = 5; //生物Y坐标(0坐标系)
+	required int32 campType = 6; //生物阵营
+	required int32 templateId = 7; //生物模板ID(客户端资源Id)
+	required int32 moveDir = 8; //移动方向(360角度)
+	required int32 faceDir = 9;//生物朝向(360角度)
+	repeated PBSKillBean skills= 10; //技能列表
+	optional string name = 11;//生物名称
+	optional int64 playerId = 12; //玩家Id
+	optional int64 createSkillId = 13;//创建生物技能ID
+	optional int32 startX=14;//开始X坐标(0坐标系)
+	optional int32 startY=15;//开始Y坐标(0坐标系)
+	optional string playerName=16;//玩家名字
+	optional int32 detailType=17;//生物明细类型
+
+}
+//技能信息
+message PBSKillBean{
+	optional int32 index = 1; //技能槽位置(0开始)
+	required int32 skillId=2;//技能(0表示空)
+}
+
+//目标伤害包
+message PBTargetHurtBean{
+	required int32 targetPhId = 1; //命中生物ID
+	required bool miss = 2; //是否丢失
+	required int32 type = 4; //1.治疗，2.普通伤害，3.暴击伤害,4.破坏力
+	required int32 value = 5; //具体值
+	required int32 curHp = 6; //当前血量
+}
+//排行榜信息
+message RankBoardBean{
+	required int32 phId = 1; //生物Id(英雄ID）
+	required int32 killNum = 2; //击杀次数
+	required int32 deadTime = 3; //死亡次数
+	required int32 assistsTime = 4; //助攻次数
+	required int32 heroHurt = 5; //对英雄总伤害
+	required int32 monsterHurt = 6; //对怪物总伤害
+	required int32 receiveHurt = 7; //承受到的总伤害
+}
+
+//部分需定时更新的数据
+message StatisticBean{
+	required int32 phId = 1; //生物Id(英雄ID）
+	required int32 heroHurt = 2; //对英雄总伤害
+	required int32 monsterHurt = 3; //对怪物总伤害
+	required int32 receiveHurt = 4; //承受到的总伤害
+}
+
+// 阵营战斗数据
+message CampBean{
+	required int32 campType = 1; //阵营
+	required int32 score = 2;//分数，总击杀人数
+}
+
+// 战斗结束后英雄的结算数据
+message PlayerSettleBean{
+	required int32 phId = 1; //生物Id(英雄ID）
+}
+
+
+
+
+
+//@msg{"code":706, "name":"GameStart", "desc":"游戏开始(所有玩家加载完成)", "msgBody":"PBGameStartResp" }
+message PBGameStartResp{
+	required int32 playerReadyTime = 1;//玩家准备时间(单位毫秒)
+}
+
+//@msg{"code":707, "name":"Move", "desc":"位移消息", "msgBody":"PBMoveReq", "template":"FightingHeroHandler"}
+message PBMoveReq {
+	required int32 startX = 1;								    //起始X坐标(0坐标系)
+	required int32 startY = 2;								    //起始Y坐标(0坐标系)
+ 	required int32 moveDir = 3; 								//移动方向(360角度)
+	required int32 faceDir = 4;	 								//生物朝向
+	required int64 startTime = 5;							    //客户端点击时间
+}
+
+//@msg{"code":708, "name":"Move", "desc":"位移消息", "msgBody":"PBMoveResp"}
+message PBMoveResp {
+	required int32 phId=1;										//生物id
+	required int32 startX = 2;								    //起始X坐标(0坐标系)
+	required int32 startY = 3;								    //起始Y坐标(0坐标系)
+	required int32 moveDir = 4; 								//移动方向(360角度)
+    required int32 faceDir = 5;								    //生物朝向
+	required int64 startTime =6;								//客户端点击时间
+}
+
+//@msg{"code":709, "name":"MoveStop", "desc":"停止移动", "msgBody":"PBMoveStopReq", "template":"FightingHeroHandler"}
+message PBMoveStopReq {
+	required int32 stopX = 1;	//停止X坐标(0坐标系)
+	required int32 stopY = 2;	//停止Y坐标(0坐标系)
+}
+
+//@msg{"code":710, "name":"MoveStop", "desc":"停止移动", "msgBody":"PBMoveStopResp"}
+message PBMoveStopResp {
+	required int32 phId = 1;//生物id
+	required int32 toX = 2;//停止X坐标(0坐标系)
+	required int32 toY = 3;//停止Y坐标(0坐标系)
+}
+
+//@msg{"code":712, "name":"PropValueUpdate", "desc":"属性值同步", "msgBody":"PBPropValueUpdateResp"}
+message PBPropValueUpdateResp{
+	required int32 phId=1;				 //生物id
+    repeated PBPropValueBean propValues =2;//属性列表
+}
+
+//@msg{"code":714, "name":"MoveCurPoint", "desc":"移动同步点测试专用", "msgBody":"PBMoveCurPointResp"}
+message PBMoveCurPointResp {
+	required int32 x = 1; //x(0坐标系)
+	required int32 y = 2; //y(0坐标系)
+	required int32 phID = 3; //唯一ID
+}
+
+
+//@msg{"code":716, "name":"LivingDie", "desc":"生物死亡消息", "msgBody":"PBLivingDieResp"}
+message PBLivingDieResp {
+	required int32 phID = 1; //唯一ID
+	required int32 disappearTime=2;//尸体消失时间
+}
+
+//@msg{"code":718, "name":"LivingRemove", "desc":"生物移除消息", "msgBody":"PBLivingRemoveResp"}
+message PBLivingRemoveResp {
+	required int32 phID = 1; //唯一ID
+}
+
+//@msg{"code":719, "name":"FaceDir", "desc":"同步朝向", "msgBody":"PBFaceDirReq", "template":"FightingHeroHandler"}
+message PBFaceDirReq{
+    required int32 faceDir=1;//朝向
+}
+
+//@msg{"code":720, "name":"FaceDir", "desc":"同步朝向", "msgBody":"PBFaceDirResp"}
+message PBFaceDirResp{
+    required int32 phID = 1; //唯一ID
+    required int32 faceDir=2;//朝向
+}
+
+//@msg{"code":722, "name":"BuffUpdate", "desc":"Buff添加或更新", "msgBody":"PBBuffUpdateResp"}
+message PBBuffUpdateResp {
+	required int32 phID = 1; //唯一ID
+	required int32 buffId = 2; //模板ID
+	required int32 sourceId = 3; //来源ID
+	required int32 targetId = 4; //目标ID
+	required int32 lastTime=5;   //BUFF持续时间
+
+}
+
+
+//@msg{"code":724, "name":"BuffRemove", "desc":"Buff移除", "msgBody":"PBBuffRemoveResp"}
+message PBBuffRemoveResp{
+	required int32 phID = 1; //移除的buff唯一ID
+}
+
+//客户端请求 使用技能
+//@msg{"code":725, "name":"SkillUse", "desc":"使用技能", "msgBody":"PBSkillUseReq", "template":"FightingHeroHandler"}
+message PBSkillUseReq{
+	required int32 index = 1;                             //技能槽位置(0开始)
+	required int32 skillAngle=2;                        //(负数表示，客户端没有选择技能释放方向)
+	required int32 startX = 4;							   //子弹出生位置X轴(0坐标系)
+	required int32 startY = 5;							   //子弹出生位置Y轴(0坐标系)
+    optional int32 targetX = 7;							   //技能释放目标x轴(0坐标系)
+	optional int32 targetY = 8;							   //技能释放目标Y轴(0坐标系)
+
+}
+//技能释放响应
+//@msg{"code":726, "name":"SkillUse", "desc":"使用技能", "msgBody":"PBSkillUseResp"}
+message PBSkillUseResp{
+	required int32 phId = 1;     //释放者ID
+	required int32 skillAngle=2;                        //(负数表示，客户端没有选择技能释放方向)
+	required int32 skillId = 3;   //技能ID
+	required int32 startX = 4;							   //子弹出生位置X轴(0坐标系)
+	required int32 startY = 5;							   //子弹出生位置Y轴(0坐标系)
+	optional int32 targetX = 6;	   //技能释放目标x轴(0坐标系)
+	optional int32 targetY = 7;	  //技能释放目标Y轴(0坐标系)
+	optional int32 targetPhId=8;//锁定目标生物Id
+}
+
+//技能释放 1006
+//@msg{"code":728, "name":"SkillResult", "desc":"技能释放结果", "msgBody":"PBSkillResultResp"}
+message PBSkillResultResp{
+	optional int32 skillId = 1; //技能ID
+	required int32 sourcePhId = 2; //释放者生物Id
+	repeated PBTargetHurtBean targetHurts = 3; //伤害列表
+}
+
+//@msg{"code":730, "name":"SkillCd", "desc":"技能CD更新", "msgBody":"PBSkillCdResp"}
+message PBSkillCdResp{
+	required int32 index = 1; //技能槽位置(0开始)
+	required int32 groupCd=2;//公共CD
+	optional int32 skillCd=3;//技能CD
+}
+
+//@msg{"code":732, "name":"WeaponReload", "desc":"武器换弹夹", "msgBody":"PBWeaponReloadResp"}
+message PBWeaponReloadResp {
+	required int32 phId=1;//生物id
+	required int32 reloadTime = 2;//换弹夹时间
+}
+
+//技能中断
+//@msg{"code":734, "name":"SkillStop", "desc":"技能中断", "msgBody":"PBSkillStopResp"}
+message PBSkillStopResp {
+	required int32 skillId = 1; // 技能ID
+	required int32 sourucePhId = 2; // 释放者ID
+}
+//@msg{"code":736, "name":"SkillUpdate", "desc":"技能更新", "msgBody":"PBSkillUpdateResp"}
+message PBSkillUpdateResp{
+ 	repeated PBSKillBean skill = 1;//技能对象
+}
+
+//@msg{"code":738, "name":"LivingBorn", "desc":"生物出生", "msgBody":"PBLivingBornResp"}
+message PBLivingBornResp{
+	required PBLivingInfoBean bornLiving = 1;//出生生物
+}
+
+//@msg{"code":740, "name":"HeroReLiveTime", "desc":"英雄复活时间", "msgBody":"PBHeroReLiveTimeResp"}
+message PBHeroReLiveTimeResp{
+	required int32 phId = 1;//生物Id
+	required int32 reliveTime=2;//英雄复活时间倒计时(单位毫秒)
+}
+
+//@msg{"code":742, "name":"PickDrop", "desc":"拾取掉落成功", "msgBody":"PBPickDropResp"}
+message PBPickDropResp{
+	required int32 phId = 1;//生物Id(拾取者ID)
+	required int32 templateId=2;//掉落物品模板Id
+}
+
+//@msg{"code":744, "name":"RankBoard", "desc":"发送排名数据", "msgBody":"PBRankBoardPesp"}
+message PBRankBoardResp{
+	repeated RankBoardBean rankBoard = 1; //排行榜列表
+}
+
+//@msg{"code":746, "name":"StatisticUpdate", "desc":"部分战斗统计数据更新", "msgBody":"PBStatisticUpdateResp"}
+message PBStatisticUpdateResp{
+	repeated StatisticBean statisticBeans = 1; //部分需定时更新的数据的集合
+}
+
+//@msg{"code":748, "name":"GameOver", "desc":"战斗结束时发送", "msgBody":"PBGameOverResp"}
+message PBGameOverResp{
+	repeated CampBean campBeans = 1; //阵营数据
+	repeated PlayerSettleBean settleBeans = 2; //玩家结算数据
+}
+
+//@msg{"code":750, "name":"TalentUpLevelList", "desc":"天赋升级列表", "msgBody":"PBTalentSelectListResp"}
+message PBTalentUpLevelListResp{
+    repeated int32 talentId=1;//天赋ID
+}
+//@msg{ "code":751 ,"name":"TalentUpLevel", "desc":"天赋升级", "msgBody":"PBTalentUpLevelReq", "template":"FightingHeroHandler"}
+message PBTalentUpLevelReq{
+	required int32 talentId = 1; // 天赋ID
+}
+
+//@msg{"code":752, "name":"TalentUpLevelSuc", "desc":"天赋升级成功" }
+
+//@msg{"code":754, "name":"KillAchieve", "desc":"英雄击杀敌人后发送连续击杀人数和一段时间间隔内连续杀人数", "msgBody":"PBKillAchieveResp"}
+message PBKillAchieveResp{
+	required int32 sequentKillNum = 1; //连续击杀人数
+	required int32 timeSequentKillNum = 2; //一段时间间隔内连续杀人数
+}
+
+
+
+
+

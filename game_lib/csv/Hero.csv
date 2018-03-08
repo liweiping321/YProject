@@ -1,0 +1,4 @@
+heroId,name,type,career,level,damageRadius,weaponId,templateId
+int,string,int,int,int,int,string,int
+主角模板id,名称,类型（1近战2远程）,对应职业(1机枪手，1.弓箭手，3弹幕手),初始等级,伤害半径,默认武器,模板ID
+1,弓箭手,2,2,1,500,100001,1

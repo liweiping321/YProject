@@ -1,0 +1,14 @@
+lightID,lightName,LightDesc,LightPathType,posName,posType,disType,scaleValue,extValue,birthOffset
+int,string,string,int,string,int,int,string,string,string
+光效ID,光效名 Effects/EffectsPrefab/,光效描述,光效路径类型,光效绑定点（）,光效绑定类型（0世界1本地2服务器下发点3人物子对象）,距离显示类型是否根据(镜头远近)决定是否渲染0:始终渲染1:按距离判断渲染,缩放比例(x|y|z),延伸参数(数量_方向),出生地x|y|z
+1,role/boy/boy_001_melee,子弹起手光效(静止时),0,0,1,0,,,
+10001,role/jiqiangshou/jiqiangshou_attack_01,子弹起手光效,0,pos_weapon,1,0,,,
+10002,role/jiqiangshou/jiqiangshou_hit_01,子弹击中光效,0,0,1,0,,,
+10003,role/jiqiangshou/jiqiangshou_zidan_01,子弹实体光效,0,0,1,0,,,
+10000001,thing/muxiang_01/muxiang_bom,箱子爆炸,0,0,0,0,,,
+20000001,thing/huifu/huifu_shiqu,回复Buff,0,v_foot,3,0,,,
+30000001,thing/nanguazhandan_01/nanguazhandan_02,南瓜炸弹击中光效,0,0,1,0,,,
+30000002,thing/nanguazhandan_01/nanguazhandan_03,南瓜炸弹实体光效,0,0,1,0,,,
+20000002,thing/shiqu_wupin,拾取物品通用光效,0,v_foot,3,0,,,
+10004,ui/go_missle_damage,爆炸范围,0,v_foot,3,0,5|5|5,,0|0.01|0
+20000003,thing/shiqu_wupin,升级光效,0,v_foot,3,0,,,

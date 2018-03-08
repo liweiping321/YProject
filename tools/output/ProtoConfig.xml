@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <module maxCode="500" minCode="1" desc="公共模块" name="common">
+        <ProtoConfig bodyClazzName="com.game.protobuf.common.CommonProto$PBPingReq" code="1" desc="心跳客户端请求" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.common.CommonProto$PBPingResp" code="2" desc="心跳服务端响应" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.common.CommonProto$PBTipMsgResp" code="4" desc="通用提示消息" protocolType="PB" subCode="0" type="DOWN"/>
+    </module>
+    <module maxCode="900" minCode="701" desc="游戏战斗模块" name="fighting">
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBGameLoadingResp" code="702" desc="游戏加载进度" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBLoadingProcessReq" code="703" desc="加载进度" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBLoadingProcessResp" code="704" desc="加载进度" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBGameStartResp" code="706" desc="游戏开始(所有玩家加载完成)" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBMoveReq" code="707" desc="位移消息" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBMoveResp" code="708" desc="位移消息" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBMoveStopReq" code="709" desc="停止移动" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBMoveStopResp" code="710" desc="停止移动" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBPropValueUpdateResp" code="712" desc="属性值同步" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBMoveCurPointResp" code="714" desc="移动同步点测试专用" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBLivingDieResp" code="716" desc="生物死亡消息" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBLivingRemoveResp" code="718" desc="生物移除消息" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBFaceDirReq" code="719" desc="同步朝向" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBFaceDirResp" code="720" desc="同步朝向" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBBuffUpdateResp" code="722" desc="Buff添加或更新" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBBuffRemoveResp" code="724" desc="Buff移除" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillUseReq" code="725" desc="使用技能" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillUseResp" code="726" desc="使用技能" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillResultResp" code="728" desc="技能释放结果" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillCdResp" code="730" desc="技能CD更新" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBWeaponReloadResp" code="732" desc="武器换弹夹" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillStopResp" code="734" desc="技能中断" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBSkillUpdateResp" code="736" desc="技能更新" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBLivingBornResp" code="738" desc="生物出生" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBHeroReLiveTimeResp" code="740" desc="英雄复活时间" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBPickDropResp" code="742" desc="拾取掉落成功" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBRankBoardPesp" code="744" desc="发送排名数据" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBStatisticUpdateResp" code="746" desc="部分战斗统计数据更新" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBGameOverResp" code="748" desc="战斗结束时发送" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBTalentSelectListResp" code="750" desc="天赋升级列表" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBTalentUpLevelReq" code="751" desc="天赋升级" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="" code="752" desc="天赋升级成功" protocolType="PB" subCode="0" type="DOWN"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.fighting.FightingProto$PBKillAchieveResp" code="754" desc="英雄击杀敌人后发送连续击杀人数和一段时间间隔内连续杀人数" protocolType="PB" subCode="0" type="DOWN"/>
+    </module>
+    <module maxCode="700" minCode="601" desc="游戏匹配模块" name="match">
+        <ProtoConfig bodyClazzName="com.game.protobuf.match.MatchProto$PBStartMatchReq" code="601" desc="请求撮合加入游戏" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.match.MatchProto$PBStartMatchResp" code="602" desc="准备撮合" protocolType="PB" subCode="0" type="DOWN"/>
+    </module>
+    <module maxCode="600" minCode="501" desc="玩家模块" name="logic">
+        <ProtoConfig bodyClazzName="com.game.protobuf.logic.LogicProto$PBLoginReq" code="501" desc="用户登录请求" protocolType="PB" subCode="0" type="UP"/>
+        <ProtoConfig bodyClazzName="com.game.protobuf.logic.LogicProto$PBLoginResp" code="502" desc="用户登录响应" protocolType="PB" subCode="0" type="DOWN"/>
+    </module>
+</root>

@@ -1,0 +1,24 @@
+//@module{"name":"common","desc":"公共模块","codeRange":"[1,500]"}
+option java_package = "com.game.protobuf.common";
+option java_outer_classname = "CommonProto";
+
+//@msg{"code":1, "name":"Ping", "desc":"心跳客户端请求", "msgBody":"PBPingReq", "template":"FightingHandler"}
+message PBPingReq {
+	required int64 clientTick = 1;			//客户端时间
+	required int32 delay = 2;				//延迟
+}
+
+//@msg{"code":2,"name":"Ping","desc":"心跳服务端响应","msgBody":"PBPingResp"}
+message PBPingResp{
+	required int64 clientTick = 1;			//客户端时间
+	required int64 serverTick = 2;			//服务端时间
+}
+
+//@msg{"code":4,"name":"TipMsg","desc":"通用提示消息","msgBody":"PBTipMsgResp"}
+message PBTipMsgResp{
+
+    required int32 type=1 ;//1左聊天框中2个人系统信息提示栏(右下侧)
+    required int32 tipMsgCode=2;//提示消息号
+    repeated string args=3;//替换参数列表
+}
+

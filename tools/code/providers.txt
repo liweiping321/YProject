@@ -1,0 +1,16 @@
+register(TalentCfgProvider.getInstance());
+register(LevelExpCfgProvider.getInstance());
+register(DropTemplateCfgProvider.getInstance());
+register(SceneDropCfgProvider.getInstance());
+register(BornPositionCfgProvider.getInstance());
+register(BuffCfgProvider.getInstance());
+register(DropBoxCfgProvider.getInstance());
+register(EffectCfgProvider.getInstance());
+register(FightingTypeCfgProvider.getInstance());
+register(HeroCfgProvider.getInstance());
+register(HeroLevelCfgProvider.getInstance());
+register(MonsterCfgProvider.getInstance());
+register(SceneCfgProvider.getInstance());
+register(SceneMonsterCfgProvider.getInstance());
+register(SkillCfgProvider.getInstance());
+register(WeaponCfgProvider.getInstance());
